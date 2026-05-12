@@ -1,7 +1,5 @@
 # Sistema-de-Playlist
 
-# Sistema Playlist
-
 Projeto desenvolvido para a disciplina de Estrutura de Dados.
 
 O sistema utiliza lista encadeada simples para armazenar músicas da biblioteca e filas FIFO encadeadas para gerenciamento das filas de reprodução e histórico.
