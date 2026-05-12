@@ -9,20 +9,23 @@ class Fila:
         self.fim = None
         self.tamanho = 0
 
-    def enqueue(self, musica):
-        novo_nodo = NodoFila(musica)
+    def esta_vazia(self):
+        return self.inicio is None
 
-        if self.inicio is None:
-            self.inicio = novo_nodo
-            self.fim = novo_nodo
+    def enfileirar(self, musica):
+        novo = NodoFila(musica)
+
+        if self.esta_vazia():
+            self.inicio = novo
+            self.fim = novo
         else:
-            self.fim.proximo = novo_nodo
-            self.fim = novo_nodo
+            self.fim.proximo = novo
+            self.fim = novo
 
         self.tamanho += 1
 
-    def dequeue(self):
-        if self.inicio is None:
+    def desenfileirar(self):
+        if self.esta_vazia():
             return None
 
         musica = self.inicio.musica
@@ -34,13 +37,8 @@ class Fila:
         self.tamanho -= 1
         return musica
 
-    def limpar(self):
-        self.inicio = None
-        self.fim = None
-        self.tamanho = 0
-
-    def exibir(self):
-        if self.inicio is None:
+    def listar(self):
+        if self.esta_vazia():
             print("Fila vazia.")
             return
 
