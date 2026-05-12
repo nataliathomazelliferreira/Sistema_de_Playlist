@@ -1,7 +1,6 @@
 from biblioteca import Biblioteca
 from fila import Fila
 
-
 def ler_bpm():
     while True:
         valor = input("BPM: ")
@@ -17,7 +16,6 @@ def ler_bpm():
         except ValueError:
             print("Digite um BPM numérico.")
 
-
 def escolher_fila(filas):
     print("1 - Relaxar")
     print("2 - Focar")
@@ -28,16 +26,18 @@ def escolher_fila(filas):
 
     if opcao == "1":
         return filas["relaxar"]
+
     if opcao == "2":
         return filas["focar"]
+
     if opcao == "3":
         return filas["animar"]
+
     if opcao == "4":
         return filas["treinar"]
 
     print("Opção inválida.")
     return None
-
 
 def criar_filas():
     return {
@@ -49,6 +49,7 @@ def criar_filas():
 
 def montar_filas(biblioteca):
     filas = criar_filas()
+
     atual = biblioteca.inicio
 
     while atual is not None:
@@ -56,10 +57,13 @@ def montar_filas(biblioteca):
 
         if musica.bpm <= 80:
             filas["relaxar"].enfileirar(musica)
+
         elif musica.bpm <= 120:
             filas["focar"].enfileirar(musica)
+
         elif musica.bpm <= 160:
             filas["animar"].enfileirar(musica)
+
         else:
             filas["treinar"].enfileirar(musica)
 
@@ -67,6 +71,30 @@ def montar_filas(biblioteca):
 
     print("Filas montadas com sucesso.")
     return filas
+
+def carregar_musicas(biblioteca):
+    try:
+        arquivo = open("musicas.txt", "r", encoding="utf-8")
+
+        for linha in arquivo:
+            linha = linha.strip()
+
+            if linha == "":
+                continue
+
+            artista, titulo, genero, bpm = linha.split(";")
+
+            biblioteca.adicionar(
+                titulo,
+                artista,
+                genero,
+                int(bpm)
+            )
+
+        arquivo.close()
+
+    except FileNotFoundError:
+        print("Arquivo de músicas não encontrado.")
 
 def adicionar_musica(biblioteca):
     titulo = input("Título: ")
@@ -80,6 +108,7 @@ def remover_musica(biblioteca):
     try:
         id = int(input("ID da música: "))
         biblioteca.remover(id)
+
     except ValueError:
         print("Digite um ID numérico.")
 
@@ -93,6 +122,7 @@ def buscar_musica(biblioteca):
         try:
             id = int(input("ID: "))
             musica = biblioteca.buscar_por_id(id)
+
         except ValueError:
             print("Digite um ID numérico.")
             return
@@ -107,6 +137,7 @@ def buscar_musica(biblioteca):
 
     if musica is None:
         print("Música não encontrada.")
+
     else:
         musica.exibir()
 
@@ -124,6 +155,7 @@ def reproduzir_proxima(filas, historico):
 
     print("Reproduzindo:")
     musica.exibir()
+
     historico.enfileirar(musica)
 
 def exibir_fila(filas):
@@ -152,10 +184,13 @@ def menu():
     print("9 - Estatísticas")
     print("0 - Sair")
 
+
 def main():
     biblioteca = Biblioteca()
     filas = criar_filas()
     historico = Fila()
+
+    carregar_musicas(biblioteca)
 
     while True:
         menu()
