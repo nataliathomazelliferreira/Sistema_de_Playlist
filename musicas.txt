@@ -1,0 +1,41 @@
+Ed Sheeran;Perfect;Pop;63
+Ed Sheeran;Tenerife Sea;Pop;62
+Ed Sheeran;Lego House;Pop;78
+Alex Warren;Before You Leave Me;Pop;79
+Bastille;The Anchor;Indie Pop;76
+Lewis Capaldi;Wish You The Best;Pop;72
+Cole Swindell;She Had Me At Heads Carolina;Country;80
+Jordan Davis;Next Thing You Know;Country;74
+Noah Kahan;Stick Season;Folk Pop;79
+Ludovico Einaudi;Nuvole Bianche;Instrumental;66
+Ludovico Einaudi;Experience;Instrumental;75
+
+Bastille;Flaws;Indie Pop;95
+Bastille;Another Place;Indie Pop;102
+Vance Joy;Clarity;Indie Folk;110
+Alex Warren;Fine Place to Die;Pop;98
+Warren Zeiders;Pretty Little Poison;Country Rock;108
+Josh Ross;Trouble;Country Rock;115
+Bastille;Intro & Narrators;Indie Pop;120
+
+Taylor Swift;Cruel Summer;Pop;125
+Benson Boone;Beautiful Things;Pop Rock;130
+Counting Crows;Accidentally in Love;Rock;138
+Ed Sheeran;Shivers;Pop;141
+Pitbull;Time of Our Lives;Dance Pop;128
+Ed Sheeran;Shape of You;Pop;124
+Sabrina Carpenter;Manchild;Pop;135
+Sabrina Carpenter;Juno;Pop;140
+Flo Rida;Good Feeling;Dance Pop;129
+Calvin Harris;Summer;EDM;128
+Jonas Brothers;Sucker;Pop;138
+Jonas Brothers;SOS;Pop Rock;142
+Jonas Brothers;Burnin' Up;Pop Rock;126
+
+Imagine Dragons;Bones;Alternative Rock;170
+Imagine Dragons;Enemy;Alternative Rock;172
+Imagine Dragons;Natural;Alternative Rock;168
+Imagine Dragons;Sharks;Alternative Rock;175
+X Ambassadors;Adrenaline;Rock;180
+Bon Jovi;You Give Love a Bad Name;Rock;165
+The Killers;Somebody Told Me;Alternative Rock;169
