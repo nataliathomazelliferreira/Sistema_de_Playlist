@@ -5,15 +5,16 @@ def ler_bpm():
     while True:
         valor = input("BPM: ")
 
-        try:
+        if valor.isdigit():
             bpm = int(valor)
 
-            if bpm <= 0:
-                print("O BPM deve ser maior que zero.")
-            else:
+            if bpm > 0:
                 return bpm
 
-        except ValueError:
+            else:
+                print("O BPM deve ser maior que zero.")
+
+        else:
             print("Digite um BPM numérico.")
 
 def escolher_fila(filas):
