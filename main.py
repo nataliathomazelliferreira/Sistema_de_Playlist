@@ -1,6 +1,8 @@
-
+#aqui estou importando duas classes já criadas em um outro arquivo
+#biblioteca é a classe que gerencia a coleção de músicas, enquanto fila é a classe que gerencia as filas de reprodução
 from biblioteca import Biblioteca
 from fila import Fila
+
 
 def ler_bpm():
     while True:
@@ -234,4 +236,5 @@ def main():
 
         print()
 
-main()
+if __name__ == "__main__":
+    main()
