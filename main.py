@@ -1,6 +1,6 @@
 from biblioteca import Biblioteca
 from fila import Fila
-
+#definindo  que o bpm seja maior que zero
 def ler_bpm():
     while True:
         valor = input("BPM: ")
@@ -14,13 +14,13 @@ def ler_bpm():
                 print("O BPM deve ser maior que zero.")
         else:
             print("Digite um BPM numérico.")
-
+#definindo as opções de humor
 def escolher_fila(filas):
     print("1 - Relaxar")
     print("2 - Focar")
     print("3 - Animar")
     print("4 - Treinar")
-
+#aqui eu vou selecionar o humor que eu quero no menu
     opcao = input("Escolha uma fila: ")
 
     if opcao == "1":
@@ -37,7 +37,7 @@ def escolher_fila(filas):
 
     print("Opção inválida.")
     return None
-
+#criando as filas de acordo com o humor
 def criar_filas():
     return {
         "relaxar": Fila(),
@@ -45,7 +45,7 @@ def criar_filas():
         "animar": Fila(),
         "treinar": Fila()
     }
-
+#definindo o humor de acordo com o bpm
 def montar_filas(biblioteca):
     filas = criar_filas()
 
@@ -69,8 +69,8 @@ def montar_filas(biblioteca):
         atual = atual.proximo
 
     print("Filas de humor montadas com sucesso.")
-    return filas
-
+    return filas 
+#aqui vai abrir e carregar as musicas do arquivo musicas.txt 
 def carregar_musicas(biblioteca):
     with open("musicas.txt", "r", encoding="utf-8") as arquivo:
         for linha in arquivo:
@@ -83,7 +83,7 @@ def carregar_musicas(biblioteca):
                     genero,
                     int(bpm)
                 )
-
+#aqui eu vou usar para adicionar musicas na biblioteca pelo menu
 def adicionar_musica(biblioteca):
     titulo = input("Título: ")
     artista = input("Artista: ")
@@ -91,7 +91,7 @@ def adicionar_musica(biblioteca):
     bpm = ler_bpm()
 
     biblioteca.adicionar(titulo, artista, genero, bpm)
-
+#aqui eu vou remover 
 def remover_musica(biblioteca):
     id = input("ID da música: ")
 
@@ -99,7 +99,7 @@ def remover_musica(biblioteca):
         biblioteca.remover(int(id))
     else:
         print("Digite um ID numérico.")
-
+#aqui quando eu quero buscar a musica
 def buscar_musica(biblioteca):
     print("1 - Buscar por ID")
     print("2 - Buscar por título")
@@ -137,7 +137,7 @@ def reproduzir_proxima(filas, historico):
     musica = fila.desenfileirar()
 
     if musica is None:
-        print("Fila vazia. Não há música para reproduzir.")
+        print("Fila vazia")
         return
 
     print("Reproduzindo:")
