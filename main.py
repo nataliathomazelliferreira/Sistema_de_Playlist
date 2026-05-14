@@ -1,8 +1,5 @@
-#aqui estou importando duas classes já criadas em um outro arquivo
-#biblioteca é a classe que gerencia a coleção de músicas, enquanto fila é a classe que gerencia as filas de reprodução
 from biblioteca import Biblioteca
 from fila import Fila
-
 
 def ler_bpm():
     while True:
@@ -13,10 +10,8 @@ def ler_bpm():
 
             if bpm > 0:
                 return bpm
-
             else:
                 print("O BPM deve ser maior que zero.")
-
         else:
             print("Digite um BPM numérico.")
 
@@ -73,32 +68,21 @@ def montar_filas(biblioteca):
 
         atual = atual.proximo
 
-    print("Filas montadas com sucesso.")
+    print("Filas de humor montadas com sucesso.")
     return filas
 
 def carregar_musicas(biblioteca):
-    try:
-        arquivo = open("musicas.txt", "r", encoding="utf-8")
-
+    with open("musicas.txt", "r", encoding="utf-8") as arquivo:
         for linha in arquivo:
-            linha = linha.strip()
+            if linha.strip():
+                artista, titulo, genero, bpm = linha.strip().split(";")
 
-            if linha == "":
-                continue
-
-            artista, titulo, genero, bpm = linha.split(";")
-
-            biblioteca.adicionar(
-                titulo,
-                artista,
-                genero,
-                int(bpm)
-            )
-
-        arquivo.close()
-
-    except FileNotFoundError:
-        print("Arquivo de músicas não encontrado.")
+                biblioteca.adicionar(
+                    titulo,
+                    artista,
+                    genero,
+                    int(bpm)
+                )
 
 def adicionar_musica(biblioteca):
     titulo = input("Título: ")
@@ -109,11 +93,11 @@ def adicionar_musica(biblioteca):
     biblioteca.adicionar(titulo, artista, genero, bpm)
 
 def remover_musica(biblioteca):
-    try:
-        id = int(input("ID da música: "))
-        biblioteca.remover(id)
+    id = input("ID da música: ")
 
-    except ValueError:
+    if id.isdigit():
+        biblioteca.remover(int(id))
+    else:
         print("Digite um ID numérico.")
 
 def buscar_musica(biblioteca):
@@ -123,11 +107,11 @@ def buscar_musica(biblioteca):
     opcao = input("Escolha uma opção: ")
 
     if opcao == "1":
-        try:
-            id = int(input("ID: "))
-            musica = biblioteca.buscar_por_id(id)
+        id = input("ID: ")
 
-        except ValueError:
+        if id.isdigit():
+            musica = biblioteca.buscar_por_id(int(id))
+        else:
             print("Digite um ID numérico.")
             return
 
@@ -141,7 +125,6 @@ def buscar_musica(biblioteca):
 
     if musica is None:
         print("Música não encontrada.")
-
     else:
         musica.exibir()
 
@@ -168,12 +151,43 @@ def exibir_fila(filas):
     if fila is not None:
         fila.listar()
 
-def estatisticas(biblioteca, filas, historico):
+def adicionar_na_fila_reproducao(biblioteca, fila_reproducao):
+    id = input("ID da música: ")
+
+    if id.isdigit():
+        musica = biblioteca.buscar_por_id(int(id))
+
+        if musica is None:
+            print("Música não encontrada.")
+        else:
+            fila_reproducao.enfileirar(musica)
+            print("Música adicionada na fila de reprodução.")
+    else:
+        print("Digite um ID numérico.")
+
+def ver_fila_reproducao(fila_reproducao):
+    fila_reproducao.listar()
+
+
+def reproduzir_proxima_fila_reproducao(fila_reproducao, historico):
+    musica = fila_reproducao.desenfileirar()
+
+    if musica is None:
+        print("Fila de reprodução vazia.")
+        return
+
+    print("Reproduzindo:")
+    musica.exibir()
+
+    historico.enfileirar(musica)
+
+def estatisticas(biblioteca, filas, fila_reproducao, historico):
     print(f"Total na biblioteca: {biblioteca.total}")
     print(f"Relaxar: {filas['relaxar'].tamanho}")
     print(f"Focar: {filas['focar'].tamanho}")
     print(f"Animar: {filas['animar'].tamanho}")
     print(f"Treinar: {filas['treinar'].tamanho}")
+    print(f"Fila de reprodução: {fila_reproducao.tamanho}")
     print(f"Histórico: {historico.tamanho}")
 
 def menu():
@@ -181,17 +195,20 @@ def menu():
     print("2 - Remover música")
     print("3 - Buscar música")
     print("4 - Listar biblioteca")
-    print("5 - Montar fila de reprodução")
-    print("6 - Reproduzir próxima")
+    print("5 - Montar fila de reprodução por humor")
+    print("6 - Reproduzir próxima por humor")
     print("7 - Exibir fila de humor")
     print("8 - Exibir histórico")
     print("9 - Estatísticas")
+    print("10 - Adicionar música na fila de reprodução")
+    print("11 - Ver fila de reprodução")
+    print("12 - Reproduzir próxima da fila de reprodução")
     print("0 - Sair")
-
 
 def main():
     biblioteca = Biblioteca()
     filas = criar_filas()
+    fila_reproducao = Fila()
     historico = Fila()
 
     carregar_musicas(biblioteca)
@@ -225,7 +242,16 @@ def main():
             historico.listar()
 
         elif opcao == "9":
-            estatisticas(biblioteca, filas, historico)
+            estatisticas(biblioteca, filas, fila_reproducao, historico)
+
+        elif opcao == "10":
+            adicionar_na_fila_reproducao(biblioteca, fila_reproducao)
+
+        elif opcao == "11":
+            ver_fila_reproducao(fila_reproducao)
+
+        elif opcao == "12":
+            reproduzir_proxima_fila_reproducao(fila_reproducao, historico)
 
         elif opcao == "0":
             print("Sistema encerrado.")
@@ -236,5 +262,4 @@ def main():
 
         print()
 
-if __name__ == "__main__":
-    main()
+main()
