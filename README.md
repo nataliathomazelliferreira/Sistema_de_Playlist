@@ -114,68 +114,96 @@ sistema_playlist/
 ├── fila.py
 ├── biblioteca.py
 └── musicas.txt
-
+```
 
 ## Como Executar
 
-Para executar o projeto, primeiro abra o Prompt de Comando do Windows.
+Para executar o projeto, siga o passo a passo abaixo.
 
-No Windows, você pode fazer isso pesquisando por:
+### 1. Abrir o Prompt de Comando
+
+No Windows, pesquise por:
 
 ```text
 Prompt de Comando
-
-ou
-
-cmd
-
-Depois de abrir o Prompt de Comando, escolha a pasta onde deseja salvar o projeto.
-
-Para entrar em uma pasta, use o comando:
-
-cd nome_da_pasta
-
-Uma dica é digitar:
-
-cd 
-
-com um espaço depois do cd, e apertar a tecla Tab no teclado.
-O próprio terminal vai completando ou mostrando as pastas disponíveis.
-
-Se não aparecer a pasta desejada, continue apertando Tab até encontrar.
-
-Exemplo:
-
-cd Desktop
+```
 
 ou:
 
+```text
+cmd
+```
+
+Depois, abra o terminal.
+
+### 2. Escolher onde o projeto será salvo
+
+Entre na pasta onde deseja salvar o projeto.
+
+Exemplo:
+
+```bash
+cd Desktop
+```
+
+ou:
+
+```bash
 cd Documents
+```
 
-Depois que estiver dentro da pasta onde deseja salvar o projeto, clone o repositório:
+Também é possível digitar:
 
+```bash
+cd 
+```
+
+com um espaço depois do `cd` e apertar a tecla `Tab` para o terminal mostrar as pastas disponíveis.
+
+Continue apertando `Tab` até encontrar a pasta desejada.  
+Quando a pasta correta aparecer, pressione `Enter`.
+
+### 3. Clonar o repositório
+
+Depois de entrar na pasta escolhida, clone o repositório:
+
+```bash
 git clone https://github.com/SEU_USUARIO/sistema_playlist.git
+```
 
-Em seguida, entre na pasta do projeto:
+### 4. Entrar na pasta do projeto
 
+Após clonar, entre na pasta do projeto:
+
+```bash
 cd sistema_playlist
+```
 
-Agora execute o sistema:
+### 5. Executar o sistema
 
+Com o terminal dentro da pasta do projeto, execute:
+
+```bash
 python main.py
+```
 
-Se o comando python main.py não funcionar, tente:
+Caso o comando acima não funcione, tente:
 
+```bash
 py main.py
+```
 
-Resumo dos comandos:
+### Resumo dos comandos
 
+```bash
 cd Desktop
 git clone https://github.com/SEU_USUARIO/sistema_playlist.git
 cd sistema_playlist
 python main.py
+```
 
-ou, se necessário:
+Caso necessário:
 
+```bash
 py main.py
-
+```
